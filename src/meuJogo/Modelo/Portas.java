@@ -1,0 +1,47 @@
+package meuJogo.Modelo;
+
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
+
+public class Portas {
+    private int x,y;
+    private Image imagem;
+    private int altura, largura;
+    
+    public Portas() {
+    	this.x = 120;
+    	this.x = 300;
+    }
+    
+    public void load() {
+    	ImageIcon referencia = new ImageIcon("res\\portaframe1.png");
+    	imagem = referencia.getImage();
+    	largura = imagem.getWidth(null);
+    	
+    			
+    }
+
+	public int getX() {
+		return x;
+	}
+
+	public void setX(int x) {
+		this.x = x;
+	}
+
+	public int getY() {
+		return y;
+	}
+
+	public void setY(int y) {
+		this.y = y;
+	}
+
+	public Image getImagem() {
+		return imagem;
+	}
+    
+    
+    
+}
