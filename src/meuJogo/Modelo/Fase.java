@@ -13,6 +13,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+import meuJogo.Construtores.*;
+
 public class Fase extends JPanel implements ActionListener {
 
 	/**
@@ -55,9 +57,11 @@ public class Fase extends JPanel implements ActionListener {
 	public void paint(Graphics g) {
 		Graphics2D graficos = (Graphics2D) g;
 		graficos.drawImage(fundo, 0, 0, null);
+		
 		graficos.drawImage(portas.getImagem(), 100, 246, null);
 		graficos.drawImage(portas.getImagem(), 300, 246, null);
 		graficos.drawImage(portas.getImagem(), 500, 246, null);
+		
 		graficos.drawImage(player.getImagem(), player.getX(), player.getY(), this);
 		//Portas objeto1 = new Portas(100, 200, "res\\portaframe1.png");
 		//Portas objeto2 = new Portas(300, 400, "res\\portaframe1.png");
@@ -78,10 +82,11 @@ public class Fase extends JPanel implements ActionListener {
 		Rectangle formaPlayer = player.getBounds1();
 		Rectangle formaPorta = portas.getBounds();
 		
-		for (int i = 0; i < portas.getX(); i++) {
-			Portas tempPortas = portas.get(i);
-			
-		}
+		/*
+		 * for (int i = 0; i < portas.getX(); i++) { Portas tempPortas = portas.get(i);
+		 * 
+		 * }
+		 */
 	}
 
 	private class tecladoAdapter extends KeyAdapter{
