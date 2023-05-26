@@ -1,6 +1,7 @@
 package meuJogo.Modelo;
 
 import java.awt.Image;
+import java.awt.Rectangle;
 
 import javax.swing.ImageIcon;
 
@@ -10,16 +11,21 @@ public class Portas {
     private int altura, largura;
     
     public Portas() {
-    	this.x = 120;
-    	this.x = 300;
+    	this.x = 50;
+    	this.y = 50;
     }
     
     public void load() {
     	ImageIcon referencia = new ImageIcon("res\\portaframe1.png");
     	imagem = referencia.getImage();
-    	largura = imagem.getWidth(null);
+    	largura = imagem.getWidth(null);	
+    	altura = imagem.getHeight(null);
     	
-    			
+    }
+    
+    public Rectangle getBounds() {
+		return new Rectangle(x,y,largura,altura);
+    	
     }
 
 	public int getX() {

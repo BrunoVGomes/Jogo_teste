@@ -48,7 +48,7 @@ public class Player {
 	    largura = novaLargura;
 	}*/
 	
-	public Rectangle getBounds() {
+	public Rectangle getBounds1() {
 		return new Rectangle(x,y,largura,altura);
 	}
 	
@@ -71,6 +71,10 @@ public class Player {
 	    }
 		
 	}
+	public Rectangle getBounds() {
+		return new Rectangle(x,y,largura,altura);
+    	
+    }
 	public void keyPressed(KeyEvent tecla) {
 		int codigo = tecla.getKeyCode();
 		
@@ -132,6 +136,7 @@ public class Player {
 			dx = 0;
 		}
 	}
+	
 	public int getX() {
 		return x;
 	}
