@@ -4,15 +4,14 @@ import java.util.ArrayList;
 
 import meuJogo.Modelo.Portas;
 
-public class ClaseArray {
+public class ClaseArray extends Portas {
 	
 	private static ArrayList<Portas> listasPortas = new ArrayList<>();
 	
-	private static void adicionarNaLista() {
-		
-		Portas portas = new Portas();
+	public static void adicionarNaLista() {
 		
 		for (int i = 0; i < 3; i++) {
+			Portas portas = new Portas();
 			
 			listasPortas.add(portas);
 		}		
