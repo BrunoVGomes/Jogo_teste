@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.lang.reflect.Array;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
@@ -43,7 +44,8 @@ public class Fase extends JPanel implements ActionListener {
 		largura = novaLargura;
 
 		player = new Player();
-		player.loadParado();
+		player.loadAndando();
+		//player.loadParado();
 		addKeyListener(new tecladoAdapter());
 
 		timer = new Timer(5, this);
@@ -55,13 +57,14 @@ public class Fase extends JPanel implements ActionListener {
 
 	public void paint(Graphics g) {
 		Graphics2D graficos = (Graphics2D) g;
-		
-		 graficos.drawImage(fundo, 0, 0, null);
-		 	
-		 graficos.drawImage(portas.getImagem(), 100, 246, null);
-		 graficos.drawImage(portas.getImagem(), 300, 246, null);
-		 graficos.drawImage(portas.getImagem(), 500, 246, null);
-			 		
+
+		Array[] listaDePortas = new Array[3];
+
+		graficos.drawImage(fundo, 0, 0, null);
+
+		graficos.drawImage(portas.getImagem(listaDePortas[0]), 100, 246, null);
+		graficos.drawImage(portas.getImagem(listaDePortas[1]), 300, 246, null);
+		graficos.drawImage(portas.getImagem(listaDePortas[2]), 500, 246, null);
 
 		graficos.drawImage(player.getImagem(), player.getX(), player.getY(), this);
 

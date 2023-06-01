@@ -2,6 +2,7 @@ package meuJogo.Modelo;
 
 import java.awt.Image;
 import java.awt.Rectangle;
+import java.lang.reflect.Array;
 
 import javax.swing.ImageIcon;
 
@@ -44,7 +45,7 @@ public class Portas {
 		this.y = y;
 	}
 
-	public Image getImagem() {
+	public Image getImagem(Array listaDePortas) {
 		return imagem;
 	}
     
