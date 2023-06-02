@@ -48,6 +48,11 @@ public class Portas {
 	public Image getImagem(Array listaDePortas) {
 		return imagem;
 	}
+
+	public Portas get(int i) {
+		// TODO Auto-generated method stub
+		return null;
+	}
     
     
     

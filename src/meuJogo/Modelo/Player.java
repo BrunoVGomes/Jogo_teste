@@ -9,6 +9,9 @@ import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 
 public class Player implements ActionListener{
+	/**
+	 * 
+	 */
 	private int x,y;
 	private int dx,dy;
 	private Image imagem;
@@ -69,9 +72,11 @@ public class Player implements ActionListener{
 	}
 	
 	
-	/*
-	 * public Rectangle getBounds1() { return new Rectangle(x,y,largura,altura); }
-	 */
+	
+	public Rectangle getBounds1() {
+		return new Rectangle(x, y, largura, altura);
+	}
+	 
 	
 	public void update() {
 		x += dx;
@@ -123,7 +128,7 @@ public class Player implements ActionListener{
 	
 	public void keyRelease(KeyEvent tecla) {
 		int codigo = tecla.getKeyCode();
-		loadParado();
+		
 		
 		/*
 		 * if(codigo == KeyEvent.VK_UP || codigo == KeyEvent.VK_W ) { dy = 0; }
@@ -134,6 +139,7 @@ public class Player implements ActionListener{
 			dx = 0;
 		}
 		if(codigo == KeyEvent.VK_RIGHT || codigo == KeyEvent.VK_D ) {
+			loadParado();
 			dx = 0;
 		}
 	}
@@ -147,8 +153,5 @@ public class Player implements ActionListener{
 	public Image getImagem() {
 		return imagem;
 	}
-
-	
-
 
 }

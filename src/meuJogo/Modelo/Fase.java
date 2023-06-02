@@ -3,7 +3,7 @@ package meuJogo.Modelo;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
-//import java.awt.Rectangle;
+import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
@@ -84,17 +84,18 @@ public class Fase extends JPanel implements ActionListener {
 	
 	
 
-	/*
-	 * public void checarColisao() { Rectangle formaPlayer = player.getBounds1();
-	 * Rectangle formaPorta = portas.getBounds();
-	 * 
-	 * 
-	 * for (int i = 0; i < portas.getX(); i++) { Portas tempPortas = portas.get(i);
-	 * 
-	 * }
-	 * 
-	 * }
-	 */
+	
+	public void checarColisao() {
+		Rectangle formaPlayer = player.getBounds1();
+		Rectangle formaPorta = portas.getBounds();
+
+		for (int i = 0; i < portas.getX(); i++) {
+			Portas tempPortas = portas.get(i);
+
+		}
+
+	}
+	 
 
 	private class tecladoAdapter extends KeyAdapter {
 
