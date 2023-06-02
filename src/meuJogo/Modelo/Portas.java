@@ -19,6 +19,7 @@ public class Portas {
     public void load() {
     	ImageIcon referencia = new ImageIcon("res\\portaframe1.png");
     	imagem = referencia.getImage();
+    	
     	largura = imagem.getWidth(null);	
     	altura = imagem.getHeight(null);
     	
@@ -30,7 +31,7 @@ public class Portas {
     }
 
 	public int getX() {
-		return x;
+		return 100;
 	}
 
 	public void setX(int x) {
@@ -38,7 +39,7 @@ public class Portas {
 	}
 
 	public int getY() {
-		return y;
+		return 246;
 	}
 
 	public void setY(int y) {

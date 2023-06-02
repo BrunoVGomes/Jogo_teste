@@ -17,11 +17,12 @@ public class Player implements ActionListener{
 	private Image imagem;
 	private int altura, largura;
 	private final double GRAVIDADE = 7.8;
-	private boolean andando;
+	private boolean andando, isVisivel;
 	
 	public Player() {
 		this.x = 1;
 		this.y = 100;
+		isVisivel = true;
 		andando = false;
 		
 	}
@@ -57,25 +58,6 @@ public class Player implements ActionListener{
 		altura = novaAltura;
 	    largura = novaLargura;
 	}
-	
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		if(andando == true) {
-			paraDireita();
-		}
-		
-	}
-	
-	public void paraDireita() {
-		andando = true;
-		loadAndando();
-	}
-	
-	
-	
-	public Rectangle getBounds1() {
-		return new Rectangle(x, y, largura, altura);
-	}
 	 
 	
 	public void update() {
@@ -97,22 +79,20 @@ public class Player implements ActionListener{
 	    }
 		
 	}
-	/*public Rectangle getBounds() {
+	public Rectangle getBounds() {
 		return new Rectangle(x,y,largura,altura);
     	
-    }*/
+    }
 	
 	public void keyPressed(KeyEvent tecla) {
 		int codigo = tecla.getKeyCode();
 		
 		
-		/*if(codigo == KeyEvent.VK_UP || codigo == KeyEvent.VK_W ) {
-            dy = -15;
-
-		}
-		if(codigo == KeyEvent.VK_DOWN || codigo == KeyEvent.VK_S ) {
-			dy = 0;
-		}*/
+		/*
+		 * if(codigo == KeyEvent.VK_UP || codigo == KeyEvent.VK_W ) { dy = -15;
+		 * 
+		 * } if(codigo == KeyEvent.VK_DOWN || codigo == KeyEvent.VK_S ) { dy = 0; }
+		 */
 		
 		if(codigo == KeyEvent.VK_LEFT || codigo == KeyEvent.VK_A ) {
 			
@@ -120,7 +100,8 @@ public class Player implements ActionListener{
 			
 		}
 		if(codigo == KeyEvent.VK_RIGHT || codigo == KeyEvent.VK_D ) {
-			paraDireita();
+			
+			//paraDireita();
 			dx = 5;
 			
 		}
@@ -139,9 +120,17 @@ public class Player implements ActionListener{
 			dx = 0;
 		}
 		if(codigo == KeyEvent.VK_RIGHT || codigo == KeyEvent.VK_D ) {
-			loadParado();
+			//loadParado();
 			dx = 0;
 		}
+	}
+	
+	public boolean isVisivel() {
+		return isVisivel;
+	}
+
+	public void setVisivel(boolean isVisivel) {
+		this.isVisivel = isVisivel;
 	}
 	
 	public int getX() {
@@ -153,5 +142,17 @@ public class Player implements ActionListener{
 	public Image getImagem() {
 		return imagem;
 	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		
+		/* if (andando == true) { paraDireita(); } */
+		 
+	}
+
+	
+	/* public void paraDireita() { andando = true; loadAndando(); } */
+	 
+		
 
 }

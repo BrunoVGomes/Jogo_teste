@@ -8,7 +8,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
@@ -26,7 +27,10 @@ public class Fase extends JPanel implements ActionListener {
 	private Timer timer;
 	private int altura, largura;
 	private Portas portas;
-
+	private List<Portas> porta;
+	private boolean emJogo;
+	
+	
 	public Fase() {
 		setFocusable(true);
 		setDoubleBuffered(true);
@@ -50,26 +54,46 @@ public class Fase extends JPanel implements ActionListener {
 
 		timer = new Timer(5, this);
 		timer.start();
-
+		porta = new ArrayList<Portas>();
 		portas = new Portas();
 		portas.load();
+		porta.add(portas);
+		
+		emJogo = true;
 	}
 
 	public void paint(Graphics g) {
 		Graphics2D graficos = (Graphics2D) g;
+		if (emJogo == true) {
+			//Array[] listaDePortas = new Array[3];
 
-		Array[] listaDePortas = new Array[3];
+			graficos.drawImage(fundo, 0, 0, null);
+			
+			for(int i = 0; i<porta.size();i++) {
+				Portas tempPortas = porta.get(i);
+				graficos.drawImage(tempPortas.getImagem(null), tempPortas.getX(), tempPortas.getY(), null);
+				
+			}
+			
+			/*
+			 * for (Portas tempPortas : porta) { graficos.drawImage(porta.getImagem(null),
+			 * porta.getX(), porta.getY(), null); }
+			 */
+			
+			/*
+			 * graficos.drawImage(portas.getImagem(listaDePortas[0]), 100, 246, null);
+			 * graficos.drawImage(portas.getImagem(listaDePortas[1]), 300, 246, null);
+			 * graficos.drawImage(portas.getImagem(listaDePortas[2]), 500, 246, null);
+			 */
 
-		graficos.drawImage(fundo, 0, 0, null);
+			graficos.drawImage(player.getImagem(), player.getX(), player.getY(), this);
 
-		graficos.drawImage(portas.getImagem(listaDePortas[0]), 100, 246, null);
-		graficos.drawImage(portas.getImagem(listaDePortas[1]), 300, 246, null);
-		graficos.drawImage(portas.getImagem(listaDePortas[2]), 500, 246, null);
-
-		graficos.drawImage(player.getImagem(), player.getX(), player.getY(), this);
-
+		}else {
+			System.out.println("ai ai ai");
+		}
 		g.dispose();
 
+		
 	}
 
 	@Override
@@ -86,11 +110,17 @@ public class Fase extends JPanel implements ActionListener {
 
 	
 	public void checarColisao() {
-		Rectangle formaPlayer = player.getBounds1();
+		Rectangle formaPlayer = player.getBounds();
 		Rectangle formaPorta = portas.getBounds();
 
-		for (int i = 0; i < portas.getX(); i++) {
-			Portas tempPortas = portas.get(i);
+		for (int i = 0; i < porta.size(); i++) {
+			Portas tempPortas = porta.get(i);
+			formaPorta = tempPortas.getBounds();
+			
+			if(formaPlayer.intersects(formaPorta)) {
+				emJogo = false;
+				System.out.println("papi do céu");
+			}
 
 		}
 
