@@ -17,13 +17,21 @@ public class Player implements ActionListener{
 	private Image imagem;
 	private int altura, largura;
 	private final double GRAVIDADE = 7.8;
+<<<<<<< Updated upstream
 	private boolean andando, isVisivel;
+=======
+	//private boolean andando;
+>>>>>>> Stashed changes
 	
 	public Player() {
 		this.x = 1;
 		this.y = 100;
+<<<<<<< Updated upstream
 		isVisivel = true;
 		andando = false;
+=======
+		//andando = false;
+>>>>>>> Stashed changes
 		
 	}
 
@@ -58,7 +66,19 @@ public class Player implements ActionListener{
 		altura = novaAltura;
 	    largura = novaLargura;
 	}
+<<<<<<< Updated upstream
 	 
+=======
+	
+	/*
+	 * @Override public void actionPerformed(ActionEvent e) { if(andando == true) {
+	 * paraDireita(); }
+	 * 
+	 * }
+	 * 
+	 * public void paraDireita() { andando = true; loadAndando(); }
+	 */
+>>>>>>> Stashed changes
 	
 	public void update() {
 		x += dx;
@@ -100,7 +120,10 @@ public class Player implements ActionListener{
 			
 		}
 		if(codigo == KeyEvent.VK_RIGHT || codigo == KeyEvent.VK_D ) {
+<<<<<<< Updated upstream
 			
+=======
+>>>>>>> Stashed changes
 			//paraDireita();
 			dx = 5;
 			
@@ -148,6 +171,12 @@ public class Player implements ActionListener{
 		
 		/* if (andando == true) { paraDireita(); } */
 		 
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	

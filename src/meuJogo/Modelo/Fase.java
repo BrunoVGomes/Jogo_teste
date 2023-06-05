@@ -9,7 +9,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+<<<<<<< Updated upstream
 import java.util.List;
+=======
+>>>>>>> Stashed changes
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
@@ -27,10 +30,16 @@ public class Fase extends JPanel implements ActionListener {
 	private Timer timer;
 	private int altura, largura;
 	private Portas portas;
+<<<<<<< Updated upstream
 	private List<Portas> porta;
 	private boolean emJogo;
 	
 	
+=======
+	private ArrayList<Portas> listaPortas;
+	Portas[] listaPorta = (Portas[]) portas.portaChata();
+
+>>>>>>> Stashed changes
 	public Fase() {
 		setFocusable(true);
 		setDoubleBuffered(true);
@@ -67,6 +76,7 @@ public class Fase extends JPanel implements ActionListener {
 		if (emJogo == true) {
 			//Array[] listaDePortas = new Array[3];
 
+<<<<<<< Updated upstream
 			graficos.drawImage(fundo, 0, 0, null);
 			
 			for(int i = 0; i<porta.size();i++) {
@@ -87,6 +97,26 @@ public class Fase extends JPanel implements ActionListener {
 			 */
 
 			graficos.drawImage(player.getImagem(), player.getX(), player.getY(), this);
+=======
+		//Array[] listaDePortas = new Array[3];
+
+		graficos.drawImage(fundo, 0, 0, null);
+		
+		
+		for (int i = 0; i < listaPorta.length; i++) {
+			Portas passagem = listaPorta[1];
+			passagem.load();
+			//graficos.drawImage(passagem.getImagem(), 100, 246, null);
+			
+		}
+		/*
+		 * graficos.drawImage(portas.getImagem(listaDePortas[0]), 100, 246, null);
+		 * graficos.drawImage(portas.getImagem(listaDePortas[1]), 300, 246, null);
+		 * graficos.drawImage(portas.getImagem(listaDePortas[2]), 500, 246, null);
+		 */
+
+		graficos.drawImage(player.getImagem(), player.getX(), player.getY(), this);
+>>>>>>> Stashed changes
 
 		}else {
 			System.out.println("ai ai ai");
@@ -109,6 +139,7 @@ public class Fase extends JPanel implements ActionListener {
 	
 
 	
+<<<<<<< Updated upstream
 	public void checarColisao() {
 		Rectangle formaPlayer = player.getBounds();
 		Rectangle formaPorta = portas.getBounds();
@@ -125,6 +156,22 @@ public class Fase extends JPanel implements ActionListener {
 		}
 
 	}
+=======
+	/*
+	 * public void checarColisao() { Rectangle formaPlayer = player.getBounds();
+	 * Rectangle formaPorta = portas.getBounds();
+	 * 
+	 * for (int i = 0; i < listaPorta.size(); i++) { Portas tempPortas =
+	 * listaPorta.get(i); if(formaPorta.intersects(formaPlayer)) {
+	 * System.out.println("MDS DO CEU BERG");
+	 * 
+	 * }
+	 * 
+	 * }
+	 * 
+	 * }
+	 */
+>>>>>>> Stashed changes
 	 
 
 	private class tecladoAdapter extends KeyAdapter {

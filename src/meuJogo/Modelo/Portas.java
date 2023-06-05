@@ -10,6 +10,7 @@ public class Portas {
     private int x,y;
     private Image imagem;
     private int altura, largura;
+    private int[] listaPortas;
     
     public Portas() {
     	this.x = 50;
@@ -29,6 +30,12 @@ public class Portas {
 		return new Rectangle(x,y,largura,altura);
     	
     }
+    public Portas[] portaChata() {
+    	listaPortas[1] = largura*altura;
+    	listaPortas[2] = largura*altura;
+    	listaPortas[3] = 65*25;
+		return null;
+    }
 
 	public int getX() {
 		return 100;
@@ -46,7 +53,7 @@ public class Portas {
 		this.y = y;
 	}
 
-	public Image getImagem(Array listaDePortas) {
+	public Image getImagem(Array listaPorta) {
 		return imagem;
 	}
 
