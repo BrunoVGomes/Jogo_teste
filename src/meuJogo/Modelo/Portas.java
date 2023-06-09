@@ -25,11 +25,10 @@ public class Portas {
     	altura = imagem.getHeight(null);
     	
     }
-    
-    public Rectangle getBounds() {
-		return new Rectangle(x,y,largura,altura);
-    	
-    }
+	public Rectangle getBounds() {
+		return new Rectangle(x,y,altura,largura);
+	}
+
 	/*
 	 * public Portas[] portaChata() { listaPortas[1] = largura*altura;
 	 * listaPortas[2] = largura*altura; listaPortas[3] = 65*25;
