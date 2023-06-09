@@ -10,7 +10,7 @@ public class Portas {
     private int x,y;
     private Image imagem;
     private int altura, largura;
-    private int[] listaPortas;
+    //private int[] listaPortas;
     
     public Portas() {
     	this.x = 50;
@@ -30,22 +30,26 @@ public class Portas {
 		return new Rectangle(x,y,largura,altura);
     	
     }
-    public Portas[] portaChata() {
-    	listaPortas[1] = largura*altura;
-    	listaPortas[2] = largura*altura;
-    	listaPortas[3] = 65*25;
-		return null;
-    }
+	/*
+	 * public Portas[] portaChata() { listaPortas[1] = largura*altura;
+	 * listaPortas[2] = largura*altura; listaPortas[3] = 65*25;
+	 * 
+	 * }
+	 */
 
-	public int getX() {
-		return 100;
+	public int getX(int x) {
+		/*
+		 * int [] valoresX = new int[3]; valoresX[0]=100; valoresX[1]=200;
+		 * valoresX[2]=300;
+		 */
+		return x;
 	}
 
 	public void setX(int x) {
 		this.x = x;
 	}
 
-	public int getY() {
+	public int getY(int y) {
 		return 246;
 	}
 

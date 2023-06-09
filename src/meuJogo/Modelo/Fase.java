@@ -9,15 +9,12 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
-<<<<<<< Updated upstream
 import java.util.List;
-=======
->>>>>>> Stashed changes
+
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.Timer;
-
 
 public class Fase extends JPanel implements ActionListener {
 
@@ -27,19 +24,16 @@ public class Fase extends JPanel implements ActionListener {
 	private static final long serialVersionUID = 1L;
 	private Image fundo;
 	private Player player;
+	//player = new Player(this);
 	private Timer timer;
 	private int altura, largura;
 	private Portas portas;
-<<<<<<< Updated upstream
 	private List<Portas> porta;
 	private boolean emJogo;
-	
-	
-=======
-	private ArrayList<Portas> listaPortas;
-	Portas[] listaPorta = (Portas[]) portas.portaChata();
 
->>>>>>> Stashed changes
+	//private ArrayList<Portas> listaPortas;
+	//Portas[] listaPorta = (Portas[]) portas.portaChata();
+
 	public Fase() {
 		setFocusable(true);
 		setDoubleBuffered(true);
@@ -58,38 +52,51 @@ public class Fase extends JPanel implements ActionListener {
 
 		player = new Player();
 		player.loadAndando();
-		//player.loadParado();
+		// player.loadParado();
 		addKeyListener(new tecladoAdapter());
 
 		timer = new Timer(5, this);
 		timer.start();
-		porta = new ArrayList<Portas>();
-		portas = new Portas();
-		portas.load();
-		porta.add(portas);
 		
+		porta = new ArrayList<Portas>();
+		Portas porta1 = new Portas();
+		porta1.load();
+		porta.add(porta1);
+		
+		Portas porta2 = new Portas();
+		porta2.load();
+		porta.add(porta2);
+		
+		Portas porta3 = new Portas();
+		porta3.load();
+		porta.add(porta3);
+
 		emJogo = true;
+		
+		//checarColisao();
 	}
 
-	public void paint(Graphics g) {
+	public void paint(Graphics g) {		
 		Graphics2D graficos = (Graphics2D) g;
+		super.paint(g);
 		if (emJogo == true) {
-			//Array[] listaDePortas = new Array[3];
+			// Array[] listaDePortas = new Array[3];
 
-<<<<<<< Updated upstream
 			graficos.drawImage(fundo, 0, 0, null);
-			
-			for(int i = 0; i<porta.size();i++) {
+
+			for (int i = 0; i < porta.size(); i++) {
 				Portas tempPortas = porta.get(i);
-				graficos.drawImage(tempPortas.getImagem(null), tempPortas.getX(), tempPortas.getY(), null);
-				
+				graficos.drawImage(tempPortas.getImagem(null), tempPortas.getX(100), tempPortas.getY(246), null);
+				graficos.drawImage(tempPortas.getImagem(null), tempPortas.getX(300), tempPortas.getY(246), null);
+				graficos.drawImage(tempPortas.getImagem(null), tempPortas.getX(500), tempPortas.getY(246), null);
+
 			}
-			
+
 			/*
 			 * for (Portas tempPortas : porta) { graficos.drawImage(porta.getImagem(null),
 			 * porta.getX(), porta.getY(), null); }
 			 */
-			
+
 			/*
 			 * graficos.drawImage(portas.getImagem(listaDePortas[0]), 100, 246, null);
 			 * graficos.drawImage(portas.getImagem(listaDePortas[1]), 300, 246, null);
@@ -97,66 +104,63 @@ public class Fase extends JPanel implements ActionListener {
 			 */
 
 			graficos.drawImage(player.getImagem(), player.getX(), player.getY(), this);
-=======
-		//Array[] listaDePortas = new Array[3];
 
-		graficos.drawImage(fundo, 0, 0, null);
-		
-		
-		for (int i = 0; i < listaPorta.length; i++) {
-			Portas passagem = listaPorta[1];
-			passagem.load();
-			//graficos.drawImage(passagem.getImagem(), 100, 246, null);
-			
-		}
-		/*
-		 * graficos.drawImage(portas.getImagem(listaDePortas[0]), 100, 246, null);
-		 * graficos.drawImage(portas.getImagem(listaDePortas[1]), 300, 246, null);
-		 * graficos.drawImage(portas.getImagem(listaDePortas[2]), 500, 246, null);
-		 */
+			// Array[] listaDePortas = new Array[3];
 
-		graficos.drawImage(player.getImagem(), player.getX(), player.getY(), this);
->>>>>>> Stashed changes
 
-		}else {
-			System.out.println("ai ai ai");
-		}
+			/*
+			 * for (int i = 0; i < listaPorta.length; i++) { Portas passagem =
+			 * listaPorta[1]; passagem.load(); // graficos.drawImage(passagem.getImagem(),
+			 * 100, 246, null);
+			 * 
+			 * }
+			 */
+			/*
+			 * graficos.drawImage(portas.getImagem(listaDePortas[0]), 100, 246, null);
+			 * graficos.drawImage(portas.getImagem(listaDePortas[1]), 300, 246, null);
+			 * graficos.drawImage(portas.getImagem(listaDePortas[2]), 500, 246, null);
+			 */
+			//checarColisao();
+
+		} /*
+			 * else { System.out.println("ai ai ai"); }
+			 */
 		g.dispose();
 
-		
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
 		player.update();
+		//checarColisao();
 		repaint();
 
 	}
-	
-	
-	
-	
 
-	
-<<<<<<< Updated upstream
 	public void checarColisao() {
 		Rectangle formaPlayer = player.getBounds();
-		Rectangle formaPorta = portas.getBounds();
+		//Rectangle formaPorta = portas.getBounds();
+		boolean colidiu = false;
 
 		for (int i = 0; i < porta.size(); i++) {
 			Portas tempPortas = porta.get(i);
-			formaPorta = tempPortas.getBounds();
-			
-			if(formaPlayer.intersects(formaPorta)) {
-				emJogo = false;
-				System.out.println("papi do céu");
+			Rectangle formaPorta = tempPortas.getBounds();
+			//formaPorta = tempPortas.getBounds();
+
+			if (formaPlayer.intersects(formaPorta)) {
+				System.out.println("bateu aqui");
+				colidiu = true;
+				
+				break;
 			}
 
 		}
+		
+		emJogo = !colidiu;
 
 	}
-=======
+
 	/*
 	 * public void checarColisao() { Rectangle formaPlayer = player.getBounds();
 	 * Rectangle formaPorta = portas.getBounds();
@@ -171,15 +175,13 @@ public class Fase extends JPanel implements ActionListener {
 	 * 
 	 * }
 	 */
->>>>>>> Stashed changes
-	 
 
 	private class tecladoAdapter extends KeyAdapter {
 
 		@Override
 		public void keyPressed(KeyEvent e) {
 			player.keyPressed(e);
-			
+
 		}
 
 		@Override
