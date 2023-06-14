@@ -14,24 +14,16 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-
 public class Fase extends JPanel implements ActionListener {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private Image fundo, imagem;
 	private Player player;
-	// player = new Player(this);
 	private Timer timer;
 	private int altura, largura;
 	private Portas porta;
 	private ArrayList<Portas> portas;
 	private boolean emJogo;
-
-	// private ArrayList<Portas> listaPortas;
-	// Portas[] listaPorta = (Portas[]) portas.portaChata();
 
 	public Fase() {
 		setFocusable(true);
@@ -51,13 +43,13 @@ public class Fase extends JPanel implements ActionListener {
 
 		player = new Player();
 		player.loadAndando();
-		// player.loadParado();
 		addKeyListener(new tecladoAdapter());
 
 		timer = new Timer(5, this);
 		timer.start();
 
 		portas = new ArrayList<Portas>();
+		
 		Portas porta1 = new Portas();
 		porta1.load();
 		portas.add(porta1);
@@ -69,62 +61,33 @@ public class Fase extends JPanel implements ActionListener {
 		Portas porta3 = new Portas();
 		porta3.load();
 		portas.add(porta3);
-		
+
 		verificarColisao();
 
 		emJogo = true;
 
-		// checarColisao();
 	}
 
 	public void paint(Graphics g) {
 		Graphics2D graficos = (Graphics2D) g;
 		super.paint(g);
+
 		if (emJogo == true) {
-			// Array[] listaDePortas = new Array[3];
 
 			graficos.drawImage(fundo, 0, 0, null);
 
 			for (int i = 0; i < portas.size(); i++) {
-				Portas tempPortas = portas.get(i);
-				graficos.drawImage(tempPortas.getImagem(null), tempPortas.getX(100), tempPortas.getY(246), null);
-				graficos.drawImage(tempPortas.getImagem(null), tempPortas.getX(300), tempPortas.getY(246), null);
-				graficos.drawImage(tempPortas.getImagem(null), tempPortas.getX(500), tempPortas.getY(246), null);
 
+				Portas imgPortas = portas.get(i);
+				graficos.drawImage(imgPortas.getImagem(null), imgPortas.getX(100), imgPortas.getY(246), null);
+				graficos.drawImage(imgPortas.getImagem(null), imgPortas.getX(300), imgPortas.getY(246), null);
+				graficos.drawImage(imgPortas.getImagem(null), imgPortas.getX(500), imgPortas.getY(246), null);
 			}
 
-			/*
-			 * for (Portas tempPortas : porta) { graficos.drawImage(porta.getImagem(null),
-			 * porta.getX(), porta.getY(), null); }
-			 */
-
-			/*
-			 * graficos.drawImage(portas.getImagem(listaDePortas[0]), 100, 246, null);
-			 * graficos.drawImage(portas.getImagem(listaDePortas[1]), 300, 246, null);
-			 * graficos.drawImage(portas.getImagem(listaDePortas[2]), 500, 246, null);
-			 */
-
 			graficos.drawImage(player.getImagem(), player.getX(), player.getY(), this);
+			;
+		}
 
-			// Array[] listaDePortas = new Array[3];
-
-			/*
-			 * for (int i = 0; i < listaPorta.length; i++) { Portas passagem =
-			 * listaPorta[1]; passagem.load(); // graficos.drawImage(passagem.getImagem(),
-			 * 100, 246, null);
-			 * 
-			 * }
-			 */
-			/*
-			 * graficos.drawImage(portas.getImagem(listaDePortas[0]), 100, 246, null);
-			 * graficos.drawImage(portas.getImagem(listaDePortas[1]), 300, 246, null);
-			 * graficos.drawImage(portas.getImagem(listaDePortas[2]), 500, 246, null);
-			 */
-			// checarColisao();
-
-		} /*
-			 * else { System.out.println("ai ai ai"); }
-			 */
 		g.dispose();
 
 	}
@@ -137,60 +100,34 @@ public class Fase extends JPanel implements ActionListener {
 
 	}
 
-	/*
-	 * public void checarColisao() { Rectangle formaPlayer = player.getBounds();
-	 * Rectangle formaPorta = porta.getBounds(); boolean colidiu = false;
-	 * 
-	 * for (int i = 0; i < portas.size(); i++) { Portas tempPortas = portas.get(i);
-	 * Rectangle formaPorta1 = tempPortas.getBounds(); formaPorta1 =
-	 * tempPortas.getBounds(); if (formaPlayer.intersects(formaPorta1)) { ImageIcon
-	 * referencia = new ImageIcon("res\\framewalkgiff.gif"); imagem =
-	 * referencia.getImage();
-	 * 
-	 * System.out.println("bateu aqui"); colidiu = true;
-	 * 
-	 * } else { System.out.println("to passando liso"); }
-	 * 
-	 * }
-	 * 
-	 * emJogo = !colidiu;
-	 * 
-	 * }
-	 */
-
-	public boolean colide(Player player, ArrayList<Portas> portas) {
+	public boolean colide(Player player, Portas portas) {
 		Rectangle playerBounds = player.getBounds();
-		
-		for(Portas porta: portas) {
-			Rectangle portaBounds = porta.getBounds();
-			if(playerBounds.intersects(portaBounds)) {
-				return true;
-			}
+		Rectangle portaBounds = portas.getBounds();
+
+		if (playerBounds.intersects(portaBounds)) {
+			return true;
 		}
 		return false;
-		
 	}
 
 	public void verificarColisao() {
-		if (colide(player, this.portas)) {
-			System.out.println("GOOOOOOOOOOOOOLLL");
+		Portas portaUm = portas.get(0);
+		Portas portaDois = portas.get(1);
+		Portas portaTres = portas.get(2);
+
+		if (colide(player, portaUm)) {
+			
+			System.out.println("Golaço");
+			
+		}else if(colide(player, portaDois)){
+			
+			System.out.println("Perneira");
+			
+		}else if (colide(player, portaTres)) {
+			
+			System.out.println("papi");
 		}
 	}
-
-	/*
-	 * public void checarColisao() { Rectangle formaPlayer = player.getBounds();
-	 * Rectangle formaPorta = portas.getBounds();
-	 * 
-	 * for (int i = 0; i < listaPorta.size(); i++) { Portas tempPortas =
-	 * listaPorta.get(i); if(formaPorta.intersects(formaPlayer)) {
-	 * System.out.println("MDS DO CEU BERG");
-	 * 
-	 * }
-	 * 
-	 * }
-	 * 
-	 * }
-	 */
 
 	private class tecladoAdapter extends KeyAdapter {
 
