@@ -30,7 +30,7 @@ public class Player {
 		altura = imagem.getHeight(null);
 		largura = imagem.getWidth(null);
 
-		int novaLargura = 88;
+		int novaLargura = 111;
 		int novaAltura = (largura * novaLargura) / largura;
 		imagem = imagem.getScaledInstance(novaLargura, novaAltura, Image.SCALE_DEFAULT);
 
@@ -43,13 +43,30 @@ public class Player {
 		if (x < 0) {
 			x = 0;
 		}
-		if (x > 800 - largura) {
-			x = 800 - largura;
+		if (x > 1014 - largura) {
+			x = 1014 - largura;
 		}
 		double velocidadeY = GRAVIDADE;
 		y += velocidadeY;
-		if (y > 362) {
-			y = 362;
+		if (y > 364) {
+			y = 364;
+			velocidadeY = 0;
+		}
+
+	}
+	public void updateDois() {
+		x += dx;
+		y += dy;
+		if (x < 65) {
+			x = 65;
+		}
+		if (x > 954 - largura) {
+			x = 954 - largura;
+		}
+		double velocidadeY = GRAVIDADE;
+		y += velocidadeY;
+		if (y > 360) {
+			y = 360;
 			velocidadeY = 0;
 		}
 
@@ -59,19 +76,13 @@ public class Player {
 		return new Rectangle(x, y, largura, altura);
 	}
 
-	
-	
-	
-	
-	
-	
 	public void keyPressed(KeyEvent tecla) {
 		int codigo = tecla.getKeyCode();
 		if (codigo == KeyEvent.VK_LEFT || codigo == KeyEvent.VK_A) {
-			dx = -5;
+			dx = -11;
 		}
 		if (codigo == KeyEvent.VK_RIGHT || codigo == KeyEvent.VK_D) {
-			dx = 5;
+			dx = 11;
 
 		}
 	}
@@ -87,20 +98,6 @@ public class Player {
 		}
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-
-	/*
-	 * public boolean isVisivel() { return isVisivel; }
-	 * 
-	 * public void setVisivel(boolean isVisivel) { this.isVisivel = isVisivel; }
-	 */
-
 	public int getX() {
 		return x;
 	}
@@ -117,8 +114,5 @@ public class Player {
 	  public void actionPerformed(ActionEvent e) {
 	  
 	 }
-	 
-
-	/* public void paraDireita() { andando = true; loadAndando(); } */
 
 }

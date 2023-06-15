@@ -34,8 +34,8 @@ public class Fase extends JPanel implements ActionListener {
 		altura = fundo.getHeight(null);
 		largura = fundo.getWidth(null);
 
-		int novaLargura = 800;
-		int novaAltura = 565;
+		int novaLargura = 999;
+		int novaAltura = 595;
 		fundo = fundo.getScaledInstance(novaLargura, novaAltura, Image.SCALE_DEFAULT);
 
 		altura = novaAltura;
@@ -43,26 +43,24 @@ public class Fase extends JPanel implements ActionListener {
 
 		player = new Player();
 		player.loadAndando();
-		addKeyListener(new tecladoAdapter());
+		addKeyListener(new TecladoAdapter());
 
 		timer = new Timer(5, this);
 		timer.start();
 
 		portas = new ArrayList<Portas>();
-		
-		Portas porta1 = new Portas();
-		porta1.load();
-		portas.add(porta1);
 
-		Portas porta2 = new Portas();
-		porta2.load();
-		portas.add(porta2);
+		Portas portaUm = new Portas();
+		portaUm.load();
+		portas.add(portaUm);
 
-		Portas porta3 = new Portas();
-		porta3.load();
-		portas.add(porta3);
+		Portas portaDois = new Portas();
+		portaDois.load();
+		portas.add(portaDois);
 
-		verificarColisao();
+		Portas portaTres = new Portas();
+		portaTres.load();
+		portas.add(portaTres);
 
 		emJogo = true;
 
@@ -79,13 +77,12 @@ public class Fase extends JPanel implements ActionListener {
 			for (int i = 0; i < portas.size(); i++) {
 
 				Portas imgPortas = portas.get(i);
-				graficos.drawImage(imgPortas.getImagem(null), imgPortas.getX(100), imgPortas.getY(246), null);
-				graficos.drawImage(imgPortas.getImagem(null), imgPortas.getX(300), imgPortas.getY(246), null);
-				graficos.drawImage(imgPortas.getImagem(null), imgPortas.getX(500), imgPortas.getY(246), null);
+				graficos.drawImage(imgPortas.getImagem(null), imgPortas.getX(185), imgPortas.getY(270), null);
+				graficos.drawImage(imgPortas.getImagem(null), imgPortas.getX(385), imgPortas.getY(270), null);
+				graficos.drawImage(imgPortas.getImagem(null), imgPortas.getX(585), imgPortas.getY(270), null);
 			}
 
 			graficos.drawImage(player.getImagem(), player.getX(), player.getY(), this);
-			;
 		}
 
 		g.dispose();
@@ -116,20 +113,20 @@ public class Fase extends JPanel implements ActionListener {
 		Portas portaTres = portas.get(2);
 
 		if (colide(player, portaUm)) {
-			
+
 			System.out.println("Golaço");
-			
-		}else if(colide(player, portaDois)){
-			
+
+		} else if (colide(player, portaDois)) {
+
 			System.out.println("Perneira");
-			
-		}else if (colide(player, portaTres)) {
-			
+
+		} else if (colide(player, portaTres)) {
+
 			System.out.println("papi");
 		}
 	}
 
-	private class tecladoAdapter extends KeyAdapter {
+	private class TecladoAdapter extends KeyAdapter {
 
 		@Override
 		public void keyPressed(KeyEvent e) {

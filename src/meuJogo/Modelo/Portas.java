@@ -37,7 +37,7 @@ public class Portas {
 	}
 
 	public int getY(int y) {
-		return 246;
+		return y;
 	}
 
 	public void setY(int y) {
