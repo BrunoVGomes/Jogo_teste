@@ -2,19 +2,17 @@ package meuJogo.Modelo;
 
 import java.awt.Image;
 import java.awt.Rectangle;
-import java.lang.reflect.Array;
 
 import javax.swing.ImageIcon;
 
+/**
+ * @author Bruno
+ *
+ */
 public class Portas {
     private int x,y;
     private Image imagem;
     private int altura, largura;
-    
-    public Portas() {
-    	this.x = 50;
-    	this.y = 50;
-    }
     
     public void load() {
     	ImageIcon referencia = new ImageIcon("res\\portaframe1.png");
@@ -28,7 +26,7 @@ public class Portas {
 		return new Rectangle(x,y,altura,largura);
 	}
 
-	public int getX(int x) {
+	public int getX() {
 		return x;
 	}
 
@@ -36,7 +34,7 @@ public class Portas {
 		this.x = x;
 	}
 
-	public int getY(int y) {
+	public int getY() {
 		return y;
 	}
 
@@ -44,14 +42,9 @@ public class Portas {
 		this.y = y;
 	}
 
-	public Image getImagem(Array listaPorta) {
+	public Image getImagem() {
 		return imagem;
-	}
-
-	/*
-	 * public Portas get(int i) { // TODO Auto-generated method stub return null; }
-	 */
-    
+	}   
     
     
 }
